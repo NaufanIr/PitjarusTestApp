@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">PitjarusTestApp</string>
+    <string name="background_image">Background Image</string>
+    <string name="username">Naufan Irfanda</string>
+    <string name="role_manager">Role : Manager</string>
+    <string name="nik">NIK : MD00001</string>
+    <string name="statistic_title">Kunjungan Pada Bulan Januari 2023</string>
+    <string name="total_score">Total Score</string>
+    <string name="actual_score">Actual Score</string>
+    <string name="percentage">Percentage</string>
+    <string name="menu">Menu</string>
+    <string name="button_kunjungan">Button Kunjungan</string>
+    <string name="kunjungan">Kunjungan</string>
+    <string name="button_target">Button Target</string>
+    <string name="target">Target Install CDFDPC</string>
+    <string name="button_dashboard">Button Dashboard</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="button_history">Button History</string>
+    <string name="history">Transmission History</string>
+    <string name="button_logout">Button Logout</string>
+    <string name="logout">Logout</string>
+</resources>
