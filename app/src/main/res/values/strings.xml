@@ -19,4 +19,5 @@
     <string name="history">Transmission History</string>
     <string name="button_logout">Button Logout</string>
     <string name="logout">Logout</string>
+    <string name="title_activity_list_store">Daftar Toko</string>
 </resources>

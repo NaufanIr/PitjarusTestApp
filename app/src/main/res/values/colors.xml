@@ -10,4 +10,5 @@
     <color name="grey_100">#80AAAAAA</color>
     <color name="myBlue">#FF000062</color>
     <color name="myBlue_100">#F7F7FF</color>
+    <color name="red">#D61506</color>
 </resources>
