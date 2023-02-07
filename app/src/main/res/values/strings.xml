@@ -33,4 +33,5 @@
     <string name="ertm">ERTM : Yes</string>
     <string name="pindai_lokasi">Pindai lokasi</string>
     <string name="lokasi_anda">Lokasi Anda :</string>
+    <string name="verified">Verified</string>
 </resources>

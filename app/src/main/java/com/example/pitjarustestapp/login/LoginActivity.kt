@@ -2,9 +2,14 @@ package com.example.pitjarustestapp.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pitjarustestapp.ViewModelFactory
 import com.example.pitjarustestapp.data.local.StoreEntity
@@ -19,19 +24,42 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-
-        //Disable Night Mode Layout
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         val factory: ViewModelFactory = ViewModelFactory.getInstance(this@LoginActivity)
         viewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
 
+        setupView()
+
+        actionViewPerform()
+    }
+
+    private fun setupView() {
+        //FORCE DISABLE NIGHT MODE
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        supportActionBar?.hide()
+
+        //LOADING VIEW
+        loadingViewState(true)
+
+        //SESSION CHECKER
+        viewModel.loginSession.observeOnce(this) {
+            if (it) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                loadingViewState(false)
+            }
+        }
+    }
+
+    private fun actionViewPerform() {
         binding.btnLogin.setOnClickListener {
             val username = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
+                loadingViewState(true)
                 viewModel.login(username, password).observe(this) { response ->
                     if (response.stores != null && response.stores.isNotEmpty()) {
                         val storesResponse = response.stores
@@ -66,10 +94,12 @@ class LoginActivity : AppCompatActivity() {
                                 viewModel.insertDataToDatabase(storeList)
                             }
                         }
+                        viewModel.setSession(true)
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
+                        loadingViewState(false)
                         AlertDialog
                             .Builder(this@LoginActivity)
                             .setTitle("Tidak dapat login, ${response.message}")
@@ -78,6 +108,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             } else {
+                loadingViewState(false)
                 AlertDialog
                     .Builder(this@LoginActivity)
                     .setTitle("Username/Password tidak boleh kosong!")
@@ -87,26 +118,32 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun loadingViewState(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loading.visibility = View.VISIBLE
+            disableEnableControls(false, binding.loginLayout)
+        } else {
+            binding.loading.visibility = View.INVISIBLE
+            disableEnableControls(true, binding.loginLayout)
+        }
+    }
 
-//        val pref = SessionPref.getInstance(dataStore)
-//        val viewModel = ViewModelProvider(this, ViewModelFactory(pref))[LoginViewModel::class.java]
-//
-//        viewModel.getSession().observe(this) {
-//            Log.d("Sessions", "==========EXECUTION1==========")
-//            if (it) {
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-//                finish()
-//                //finishAffinity()
-//            }
-//        }
-//
-//        binding.btnLogin.setOnClickListener {
-//            Log.d("Sessions", "==========EXECUTION2==========")
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-////            viewModel.setSession(true)
-//        }
-//    }
+    private fun disableEnableControls(enable: Boolean, vg: ViewGroup) {
+        for (i in 0 until vg.childCount) {
+            val child = vg.getChildAt(i)
+            child.isEnabled = enable
+            if (child is ViewGroup) {
+                disableEnableControls(enable, child)
+            }
+        }
+    }
+
+    private fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+        observe(lifecycleOwner, object : Observer<T> {
+            override fun onChanged(t: T?) {
+                observer.onChanged(t)
+                removeObserver(this)
+            }
+        })
+    }
 }

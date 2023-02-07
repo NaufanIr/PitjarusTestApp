@@ -11,28 +11,34 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Toko A"
+        android:layout_marginEnd="16dp"
         android:textStyle="bold"
+        tools:text="Toko A"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayoutCompat2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/cluster"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Cluster : Small"
+        android:layout_marginEnd="16dp"
         android:textSize="14sp"
+        tools:text="Cluster : Small"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayoutCompat2"
         app:layout_constraintStart_toStartOf="@+id/title"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/subtitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TT Regular - IRTM Big Size"
+        android:layout_marginEnd="16dp"
         android:textSize="14sp"
+        tools:text="TT Regular - IRTM Big Size"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayoutCompat2"
         app:layout_constraintStart_toStartOf="@+id/cluster"
         app:layout_constraintTop_toBottomOf="@+id/cluster" />
 
@@ -55,9 +61,37 @@
             android:id="@+id/tv_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1m"
+            tools:text="1m"
             android:textSize="14sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayoutCompat"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/check_mark" />
+
+        <TextView
+            android:id="@+id/tv_verified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verified"
+            android:textSize="14sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

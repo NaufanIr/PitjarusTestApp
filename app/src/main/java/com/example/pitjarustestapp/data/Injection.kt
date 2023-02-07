@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.example.pitjarustestapp.SessionPref
 import com.example.pitjarustestapp.data.local.StoreDatabase
 import com.example.pitjarustestapp.data.remote.ApiConfig
 
@@ -14,6 +15,7 @@ object Injection {
         val apiService = ApiConfig.getApiService()
         val database = StoreDatabase.getInstance(context)
         val storeDao = database.storeDao()
-        return StoreRepository.getInstance(apiService, storeDao)
+        val pref = SessionPref.getInstance(context.dataStore)
+        return StoreRepository.getInstance(apiService, storeDao, pref)
     }
 }

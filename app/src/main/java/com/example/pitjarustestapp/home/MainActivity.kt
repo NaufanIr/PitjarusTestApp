@@ -22,14 +22,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.title = "Home"
-
-        //Disable Night Mode Layout
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
+        setupView()
+        viewActionPerform()
+    }
+
+    private fun setupView() {
         viewModel.getTotalStore().observe(this) { totalStore ->
             binding.tvCardTotal.text = totalStore.toString()
             viewModel.getActualStore().observe(this) { actualStore ->
@@ -38,14 +39,19 @@ class MainActivity : AppCompatActivity() {
                 binding.tvCardPercentage.text = percentage
             }
         }
+    }
 
+    private fun viewActionPerform() {
+
+        //GO TO STORE LIST PAGE
         binding.btnVisit.setOnClickListener {
             val intent = Intent(this, ListStoreActivity::class.java)
             startActivity(intent)
         }
 
+        //GO TO LOGIN PAGE
         binding.btnLogout.setOnClickListener {
-            //viewModel.setSession(false)
+            viewModel.setSession(false)
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()

@@ -5,12 +5,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-feature android:name="android.hardware.camera" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:allowBackup="true"
@@ -24,21 +23,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-<!--        PRODUCTION-->
+        <activity
+            android:name=".login.LoginActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-<!--        <activity-->
-<!--            android:name=".login.LoginActivity"-->
-<!--            android:exported="true" >-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-<!--        -->
-<!--        <activity-->
-<!--            android:name=".home.MainActivity"-->
-<!--            android:exported="false" />-->
-
+        <activity
+            android:name=".home.MainActivity"
+            android:exported="false"
+            android:label="Home" />
 
         <activity
             android:name=".storedetail.StoreDetailActivity"
@@ -50,25 +47,9 @@
             android:exported="false"
             android:label="@string/title_activity_list_store" />
 
-
-<!--        DEVELOPMENT-->
-        <activity
-            android:name=".login.LoginActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".home.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
-
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -35,25 +35,7 @@ class ListStoreActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var viewModel: ListStoreViewModel
     private lateinit var myLocation: Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        when {
-            permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
-                // Precise location access granted.
-                getMyLocation()
-            }
-            permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
-                // Only approximate location access granted.
-                getMyLocation()
-            }
-            else -> {
-                // No location access granted.
-            }
-        }
-    }
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListStoreBinding.inflate(layoutInflater)
@@ -92,7 +74,7 @@ class ListStoreActivity : AppCompatActivity(), OnMapReadyCallback {
 
             )
         }
-        getMyLocation()
+        setupLocation()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -117,7 +99,25 @@ class ListStoreActivity : AppCompatActivity(), OnMapReadyCallback {
         return true
     }
 
-    private fun getMyLocation() {
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        when {
+            permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
+                // Precise location access granted.
+                setupLocation()
+            }
+            permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
+                // Only approximate location access granted.
+                setupLocation()
+            }
+            else -> {
+                // No location access granted.
+            }
+        }
+    }
+
+    private fun setupLocation() {
         if(checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
             checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
         ) {
@@ -128,7 +128,7 @@ class ListStoreActivity : AppCompatActivity(), OnMapReadyCallback {
                     myLocation = it
                     val myPosition = LatLng(it.latitude, it.longitude)
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPosition, 17.2f))
-                    showListOfStore()
+                    setupStoreList()
                 }
             }
         } else {
@@ -141,7 +141,7 @@ class ListStoreActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun showListOfStore() {
+    private fun setupStoreList() {
         viewModel.getStores().observe(this) {
             if (it.isNotEmpty() && it != null) {
                 val layoutManager = LinearLayoutManager(this)

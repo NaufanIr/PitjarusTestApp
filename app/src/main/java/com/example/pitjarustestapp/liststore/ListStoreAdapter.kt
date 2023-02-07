@@ -3,6 +3,7 @@ package com.example.pitjarustestapp.liststore
 import android.content.Intent
 import android.location.Location
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pitjarustestapp.data.local.StoreEntity
@@ -40,6 +41,10 @@ class ListStoreAdapter(private val stores: List<StoreEntity>, private val myLoca
             subtitle.text = subtitleVal
             tvDistance.text = StringBuilder("$distance m")
 
+            if (stores[position].isVisited!!) {
+                linearLayoutCompat2.visibility = View.VISIBLE
+            }
+
             //CLICK ACTION
             itemUser.setOnClickListener {
                 val intent = Intent(itemUser.context, StoreDetailActivity::class.java).also {
@@ -48,6 +53,5 @@ class ListStoreAdapter(private val stores: List<StoreEntity>, private val myLoca
                 itemUser.context.startActivity(intent)
             }
         }
-
     }
 }

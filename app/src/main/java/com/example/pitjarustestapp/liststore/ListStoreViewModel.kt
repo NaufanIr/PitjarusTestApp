@@ -6,5 +6,4 @@ import com.example.pitjarustestapp.data.StoreRepository
 class ListStoreViewModel(private val storeRepository: StoreRepository): ViewModel() {
     fun getStores() = storeRepository.getStores()
 
-
 }

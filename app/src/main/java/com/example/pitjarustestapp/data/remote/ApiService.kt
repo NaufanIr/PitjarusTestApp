@@ -1,7 +1,5 @@
 package com.example.pitjarustestapp.data.remote
 
-import com.example.pitjarustestapp.BuildConfig
-import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {

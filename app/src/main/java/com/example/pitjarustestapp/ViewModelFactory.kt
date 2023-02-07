@@ -10,28 +10,6 @@ import com.example.pitjarustestapp.liststore.ListStoreViewModel
 import com.example.pitjarustestapp.login.LoginViewModel
 import com.example.pitjarustestapp.storedetail.StoreDetailViewModel
 
-//class ViewModelFactory(private val pref: SessionPref)
-//    : ViewModelProvider.NewInstanceFactory() {
-//    @Suppress("UNCHECKED_CAST")
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-//            return LoginViewModel(pref) as T
-//        } else if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-//            return MainViewModel(pref) as T
-//        }
-//        throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
-//    }
-//
-////    companion object {
-////        @Volatile
-////        private var instance: ViewModelFactory? = null
-////        fun getInstance(context: Context): ViewModelFactory =
-////            instance ?: synchronized(this) {
-////                instance ?: ViewModelFactory(Injection.provideRepository(context))
-////            }.also { instance = it }
-////    }
-//}
-
 class ViewModelFactory private constructor(private val storeRepository: StoreRepository)
     : ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")

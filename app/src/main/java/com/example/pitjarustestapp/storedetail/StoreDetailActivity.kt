@@ -55,6 +55,9 @@ class StoreDetailActivity : AppCompatActivity() {
 
     private var distance: Int? = null
 
+    private var lat: String? = null
+    private var lon: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStoreDetailBinding.inflate(layoutInflater)
@@ -66,21 +69,23 @@ class StoreDetailActivity : AppCompatActivity() {
 
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        showViewData()
+        setupView()
 
         actionViewPerform()
-
     }
 
-    private fun showViewData() {
+    private fun setupView() {
         viewModel.getData(id.toInt()).observe(this) {
             visitDate = it.visitDate ?: "-"
+            visitPhoto = it.visitPhoto
+            lat = it.latitude
+            lon = it.longitude
             val outletName = "${it.storeName} ${it.id}"
             val outlet = "Tipe Outlet : ${it.channelName}"
             val display = "Tipe Display : ${it.dcName}"
             val subDisplay = "Sub Tipe Display : ${it.subchannelName}"
             val visitDateDisplay = "Last visit : $visitDate"
-            visitPhoto = it.visitPhoto
+
 
             storeLocation = Location("Store Location").also { location ->
                 location.latitude = it.latitude.toDouble()
@@ -169,6 +174,16 @@ class StoreDetailActivity : AppCompatActivity() {
                     Toast.makeText(this, "Anda belum menetapkan lokasi!", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        //NAVIGATE USE GOOGLE MAPS
+        binding.btnNavigate.setOnClickListener {
+            val mapIntent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("google.navigation:q=$lat,$lon")
+            )
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
         }
     }
 
