@@ -5,8 +5,8 @@
     <string name="role_manager">Role : Manager</string>
     <string name="nik">NIK : MD00001</string>
     <string name="statistic_title">Kunjungan Pada Bulan Januari 2023</string>
-    <string name="total_score">Total Score</string>
-    <string name="actual_score">Actual Score</string>
+    <string name="total_store">Total Store</string>
+    <string name="actual_store">Actual Store</string>
     <string name="percentage">Percentage</string>
     <string name="menu">Menu</string>
     <string name="button_kunjungan">Button Kunjungan</string>
@@ -20,4 +20,17 @@
     <string name="button_logout">Button Logout</string>
     <string name="logout">Logout</string>
     <string name="title_activity_list_store">Daftar Toko</string>
+    <string name="daftar_kunjungan">Daftar Kunjungan</string>
+    <string name="copyright">Copyright © 2023 Naufan Irfanda. All rights reserved.</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="username1">Username</string>
+    <string name="login1">Login</string>
+    <string name="visit">Visit</string>
+    <string name="navigate">Navigate</string>
+    <string name="e_merchandising">E-Merchandising : Yes</string>
+    <string name="pareto">Pareto : Yes</string>
+    <string name="ertm">ERTM : Yes</string>
+    <string name="pindai_lokasi">Pindai lokasi</string>
+    <string name="lokasi_anda">Lokasi Anda :</string>
 </resources>

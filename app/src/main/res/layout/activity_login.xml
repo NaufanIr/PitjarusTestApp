@@ -1,108 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:scrollbarThumbVertical="@null"
+    tools:context=".login.LoginActivity">
 
-    <!--LOTTIE-->
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:lottie_rawRes="@raw/login_cover"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content" >
 
-    <!--LOGIN TITLE-->
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="36dp"
-        android:text="Login"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/lottie" />
+        <!--LOTTIE-->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:lottie_rawRes="@raw/login_cover"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <!--EMAIL TEXT FIELD-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtl_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="36dp"
-        android:layout_marginTop="32dp"
-        android:hint="Username"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:startIconDrawable="@drawable/ic_email"
-        tools:layout_editor_absoluteX="36dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_email"
+        <!--LOGIN TITLE-->
+        <TextView
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:layout_marginHorizontal="36dp"
+            android:text="@string/login1"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/lottie" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!--PASSWORD TEXT FIELD-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtl_password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="36dp"
-        android:layout_marginTop="18dp"
-        android:hint="Password"
-        app:startIconDrawable="@drawable/ic_password"
-        app:endIconMode="password_toggle"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/edtl_email" >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_password"
+        <!--EMAIL TEXT FIELD-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtl_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:layout_marginHorizontal="36dp"
+            android:layout_marginTop="32dp"
+            android:hint="@string/username1"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:startIconDrawable="@drawable/ic_email"
+            tools:layout_editor_absoluteX="36dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
 
-    <!--BUTTON LOGIN-->
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginHorizontal="36dp"
-        android:text="Login"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:background="@drawable/bg_button_rectangle"
-        app:layout_constraintTop_toBottomOf="@+id/edtl_password" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!--FOOTER-->
-    <TextView
-        android:id="@+id/tv_copyright"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginHorizontal="16dp"
-        android:text="Copyright © 2023 Naufan Irfanda. All rights reserved."
-        android:textSize="11sp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <!--PASSWORD TEXT FIELD-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edtl_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="36dp"
+            android:layout_marginTop="18dp"
+            android:hint="@string/password"
+            app:startIconDrawable="@drawable/ic_password"
+            app:endIconMode="password_toggle"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/edtl_email" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--BUTTON LOGIN-->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_marginHorizontal="36dp"
+            android:text="@string/login"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_button_rectangle"
+            app:layout_constraintTop_toBottomOf="@+id/edtl_password" />
+
+        <!--FOOTER-->
+        <TextView
+            android:id="@+id/tv_copyright"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/copyright"
+            android:textSize="11sp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

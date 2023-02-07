@@ -10,7 +10,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        tools:context=".ListStoreActivity"
+        tools:context=".liststore.ListStoreActivity"
         app:layout_constraintTop_toTopOf="parent" />
 
 <!--    <androidx.cardview.widget.CardView-->
@@ -25,13 +25,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Daftar Kunjungan"
+        android:background="@color/grey_100"
+        android:text="@string/daftar_kunjungan"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/map"
         tools:layout_editor_absoluteX="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_store"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         tools:itemCount="20"

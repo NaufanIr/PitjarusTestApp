@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StoreDetailActivity">
+    android:scrollbarThumbVertical="@null"
+    tools:context=".storedetail.StoreDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:height="30sp"
-                    android:text="Lokasi Anda : "
+                    android:text="@string/lokasi_anda"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,12 +49,11 @@
                     android:id="@+id/btn_find_myloc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pindai lokasi"
+                    android:text="@string/pindai_lokasi"
                     android:textAllCaps="false"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_my_location" />
-
 
                 <TextView
                     android:id="@+id/tv_store_name"
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:drawablePadding="8dp"
-                    android:text="Toko B"
+                    tools:text="Toko B"
                     android:textStyle="bold"
                     app:drawableLeftCompat="@drawable/ic_store"
                     app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Jl.Pal Merah No 25, Jakarta Barat"
+                    tools:text="Jl.Pal Merah No 25, Jakarta Barat"
                     android:height="30sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_store_name" />
@@ -81,7 +81,7 @@
                     android:id="@+id/tv_outlet_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tipe Outlet : Supermarket"
+                    tools:text="Tipe Outlet : Supermarket"
                     android:height="30sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_address" />
@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:height="30sp"
-                    android:text="Tipe Display : Grosir"
+                    tools:text="Tipe Display : Grosir"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_outlet_type" />
 
@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:height="30sp"
-                    android:text="Sub Tipe Display : Garmen"
+                    tools:text="Sub Tipe Display : Garmen"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_display_type" />
 
@@ -109,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:height="30sp"
-                    android:text="ERTM : Yes"
+                    android:text="@string/ertm"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_sub_display_type" />
 
@@ -118,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:height="30sp"
-                    android:text="Pareto : Yes"
+                    android:text="@string/pareto"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_ertm" />
 
@@ -127,7 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:height="30sp"
-                    android:text="E-Merchandising : Yes"
+                    android:text="@string/e_merchandising"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_pareto" />
 
@@ -159,13 +159,13 @@
             app:layout_constraintTop_toBottomOf="@+id/card_store_detail">
 
             <Button
-                android:id="@+id/btn_novisit"
+                android:id="@+id/btn_navigate"
                 android:layout_width="wrap_content"
                 android:layout_height="65dp"
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/red"
-                android:text="No Visit"
+                android:text="@string/navigate"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -175,7 +175,7 @@
                 android:layout_height="65dp"
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1"
-                android:text="Visit"
+                android:text="@string/visit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 

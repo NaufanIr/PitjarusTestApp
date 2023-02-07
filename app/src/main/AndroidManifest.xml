@@ -6,6 +6,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,24 +21,46 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PitjarusTestApp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+<!--        PRODUCTION-->
+
+<!--        <activity-->
+<!--            android:name=".login.LoginActivity"-->
+<!--            android:exported="true" >-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        -->
+<!--        <activity-->
+<!--            android:name=".home.MainActivity"-->
+<!--            android:exported="false" />-->
+
+
         <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StoreDetailActivity"
+            android:name=".storedetail.StoreDetailActivity"
             android:exported="false"
-            android:label="Verivikasi Toko" />
+            android:label="Verifikasi Toko" />
+
         <activity
-            android:name=".ListStoreActivity"
+            android:name=".liststore.ListStoreActivity"
             android:exported="false"
             android:label="@string/title_activity_list_store" />
+
+
+<!--        DEVELOPMENT-->
         <activity
-            android:name=".MainActivity"
+            android:name=".login.LoginActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".home.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,6 +68,26 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.pitjarustestapp"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
     </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
 
 </manifest>
